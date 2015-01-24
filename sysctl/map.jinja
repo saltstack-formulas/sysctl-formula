@@ -1,0 +1,6 @@
+{% set sysctl = salt['grains.filter_by']({
+  'Arch': {
+    'pkg'             : 'procps-ng',
+    'config_location' : '/etc/sysctl.d',
+  },
+}, merge=salt['pillar.get']('sysctl:lookup')) %}
