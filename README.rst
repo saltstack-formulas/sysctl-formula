@@ -1,5 +1,5 @@
-sysctl
-======
+sysctl-formula
+==============
 
 This formula ensures that a sysctl parameter is present on the system
 from a pillar file.
@@ -7,7 +7,7 @@ from a pillar file.
 
 Here's a small pillar data sample::
 
-    sysclt:
+    sysctl:
       lookup:
         pkg: procps-ng
         config_location: /etc/sysctl.d
