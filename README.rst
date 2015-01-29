@@ -15,7 +15,8 @@ Here's a small pillar data sample::
         vm.swappines: 
           value: 20
           config: 10-swap.conf
-        fs.file-max: 10000
+        fs.file-max: 
+          value: 10000
 
 
 The state sysclt will ensure these are present on the system
