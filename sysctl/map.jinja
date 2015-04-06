@@ -1,6 +1,25 @@
-{% set sysctl = salt['grains.filter_by']({
-  'Arch': {
-    'pkg'             : 'procps-ng',
-    'config_location' : '/etc/sysctl.d',
-  },
-}, merge=salt['pillar.get']('sysctl:lookup')) %}
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{## Start with  defaults from defaults.sls ##}
+{% import_yaml 'sysctl/defaults.yml' as default_settings %}
+
+{## setup variable using grains['os_family'] based logic ##}
+{% set os_family_map = salt['grains.filter_by']({
+        'Arch': {
+            "config": {
+                "location": '/etc/sysctl.d',
+            }
+        }
+  }, grain="os_family")
+%}
+{## Merge the flavor_map to the default settings ##}
+{% do default_settings.sysctl.update(os_family_map) %}
+
+{## Merge in sysctl:lookup pillar ##}
+{% set sysctl_settings = salt['pillar.get'](
+        'sysctl:lookup',
+        default=default_settings.sysctl,
+        merge=True
+    )
+%}
