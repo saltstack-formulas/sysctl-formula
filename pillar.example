@@ -1,11 +1,13 @@
 sysctl:
   lookup:
     pkg: procps-ng
-  params:
-    fs.file-max: 
-      value: 100000
-      config: fs.conf
-    vm.swappiness:
-      value: 20
-
-
+    config:
+      location: '/etc/sysctl.d'
+    params:
+      - 
+        name: fs.file-max
+        value: 100000
+        config: fs.conf
+      - 
+        name: vm.swappiness
+        value: 20
