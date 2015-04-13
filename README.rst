@@ -20,7 +20,7 @@ Here's a small pillar data sample::
             value: 10000
 
 
-The state sysclt will ensure these are present on the system
+The state sysctl will ensure these are present on the system
 based on the sysctl module of salt. 
 
 if no config value is given the key value will be written based host system.
