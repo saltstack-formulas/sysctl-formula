@@ -9,7 +9,7 @@
 sysctl-present-{{ param.name }}:
   sysctl.present:
     - name: {{ param.name }}
-    - value: {{ param.version }}
+    - value: {{ param.value }}
     {% if param.config is defined %}
     - config: {{ sysctl_settings.config.location }}/{{ param.config }}
     {% endif %}
