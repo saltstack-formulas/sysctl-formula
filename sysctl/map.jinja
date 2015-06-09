@@ -15,7 +15,19 @@
             "config": {
                 "location": '/etc/sysctl.conf',
             }
-        }
+        },
+        'Suse': {
+            "pkg": "procps",
+            "config": {
+                "location": '/etc/sysctl.d',
+            }
+        },
+        'Debian': {
+            "pkg": "procps",
+            "config": {
+                "location": '/etc/sysctl.d',
+             }
+         },
   }, grain="os_family")
 %}
 {## Merge the flavor_map to the default settings ##}
