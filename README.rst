@@ -12,7 +12,7 @@ Here's a small pillar data sample::
         pkg: procps-ng
         config:
           location: /etc/sysctl.d
-        params:
+        param:
           vm.swappines: 
             value: 20
             config: 10-swap.conf
@@ -26,4 +26,3 @@ based on the sysctl module of salt.
 if no config value is given the key value will be written based host system.
 on systemd systems this will be /etc/sysctl.d/99-salt.conf
 on sysv init systems it will be /etc/sysctl.conf
-
