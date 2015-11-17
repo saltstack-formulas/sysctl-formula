@@ -4,21 +4,7 @@ sysctl-formula
 This formula ensures that a sysctl parameter is present on the system
 from a pillar file.
 
-
-Here's a small pillar data sample::
-
-    sysctl:
-      lookup:
-        pkg: procps-ng
-        config:
-          location: /etc/sysctl.d
-        params:
-          vm.swappines: 
-            value: 20
-            config: 10-swap.conf
-          fs.file-max: 
-            value: 10000
-
+Please check pillar.example for usage example.
 
 The state sysctl will ensure these are present on the system
 based on the sysctl module of salt. 
