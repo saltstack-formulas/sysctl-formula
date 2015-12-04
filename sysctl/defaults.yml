@@ -5,10 +5,10 @@ sysctl:
   config:
     location: '/etc/sysctl.d'
   params:
-    - 
-      name: fs.file-max
-      value: 100000
-      config: fs.conf
-    - 
-      name: vm.swappiness
-      value: 20
+#    - 
+#      name: fs.file-max
+#      value: 100000
+#      config: fs.conf
+#    - 
+#      name: vm.swappiness
+#      value: 20
