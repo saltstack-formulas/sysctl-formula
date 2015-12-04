@@ -5,7 +5,7 @@
 {% from "sysctl/map.jinja" import sysctl_settings with context %}
 
 {% for param in  sysctl_settings.get('params', {}) %}
-  {% if param is maping %}
+  {% if param is mapping %}
 sysctl-present-{{ param.name }}:
   sysctl.present:
     - name: {{ param.name }}
