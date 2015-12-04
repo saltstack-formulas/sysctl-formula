@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 sysctl:
-  pkg: procps-ng
+  pkg: procps
   config:
     location: '/etc/sysctl.d'
   params:
