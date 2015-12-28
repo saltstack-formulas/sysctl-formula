@@ -2,5 +2,5 @@
 # vim: ft=sls
 
 include:
-  - sysctl.package
-  - sysctl.param
+  - .package
+  - .param
