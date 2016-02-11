@@ -4,7 +4,7 @@
 {## import settings from map.jinja ##}
 {% from "sysctl/map.jinja" import sysctl_settings with context %}
 
-{% if sysctl_settings.get('params2', '') != '' %}
+{% if sysctl_settings.params2 is defined %}
 
   {% for param_name, param in sysctl_settings.get('params2', {}).items() %}
     {% if param is mapping %}
