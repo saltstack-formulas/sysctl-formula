@@ -11,3 +11,10 @@ sysctl:
       - 
         name: vm.swappiness
         value: 20
+    # Setting params2 excludes all params values
+    params2:
+      fs.file-max:
+        value: 100000
+        config: fs.conf
+      vm.swappiness:
+        value: 20
