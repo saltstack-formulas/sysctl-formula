@@ -4,6 +4,16 @@
 {## Start with  defaults from defaults.sls ##}
 {% import_yaml 'sysctl/defaults.yml' as default_settings %}
 
+{% set sysctl_lookup = salt['pillar.get']('sysctl:lookup', {}).copy() %}
+
+{% if sysctl_lookup.params is defined %}
+{% do sysctl_lookup.pop('params') %}
+{% endif %}
+
+{% if sysctl_lookup.params2 is defined %}
+{% do sysctl_lookup.pop('params2') %}
+{% endif %}
+
 {## setup variable using grains['os_family'] based logic ##}
 {% set os_family_map = salt['grains.filter_by']({
         'Arch': {
@@ -28,14 +38,17 @@
                 "location": '/etc/sysctl.d',
              }
          },
-  }, grain="os_family")
+  },
+  grain="os_family",
+  merge=sysctl_lookup)
 %}
+
 {## Merge the flavor_map to the default settings ##}
 {% do default_settings.sysctl.update(os_family_map) %}
 
-{## Merge in sysctl:lookup pillar ##}
+{## Merge in sysctl pillar ##}
 {% set sysctl_settings = salt['pillar.get'](
-        'sysctl:lookup',
+        'sysctl',
         default=default_settings.sysctl,
         merge=True
     )
