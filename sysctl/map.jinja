@@ -16,11 +16,7 @@
 
 {## setup variable using grains['os_family'] based logic ##}
 {% set os_family_map = salt['grains.filter_by']({
-        'Arch': {
-            "config": {
-                "location": '/etc/sysctl.d',
-            }
-        },
+        'Arch': {},
         'RedHat': {
             "config": {
                 "location": '/etc/sysctl.conf',
@@ -28,15 +24,9 @@
         },
         'Suse': {
             "pkg": "procps",
-            "config": {
-                "location": '/etc/sysctl.d',
-            }
         },
         'Debian': {
             "pkg": "procps",
-            "config": {
-                "location": '/etc/sysctl.d',
-             }
          },
   },
   grain="os_family",
