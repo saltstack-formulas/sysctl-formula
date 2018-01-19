@@ -18,9 +18,6 @@
 {% set os_family_map = salt['grains.filter_by']({
         'Arch': {},
         'RedHat': {
-            "config": {
-                "location": '/etc/sysctl.conf',
-            }
         },
         'Suse': {
             "pkg": "procps",
@@ -32,6 +29,10 @@
   grain="os_family",
   merge=sysctl_lookup)
 %}
+
+{% if grains['osfinger'] == 'CentOS-6' %}
+{% do os_family_map.update( { "pkg": "procps" })  %}
+{% endif %}
 
 {## Merge the flavor_map to the default settings ##}
 {% do default_settings.sysctl.update(os_family_map) %}
