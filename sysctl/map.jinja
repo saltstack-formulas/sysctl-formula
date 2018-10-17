@@ -1,45 +1,35 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
-{## Start with  defaults from defaults.sls ##}
+{## Start with  defaults from defaults.sls and osfamilymap.yml ##}
 {% import_yaml 'sysctl/defaults.yml' as default_settings %}
+{% import_yaml "sysctl/osfamilymap.yml" as os_family_map %}
 
-{% set sysctl_lookup = salt['pillar.get']('sysctl:lookup', {}).copy() %}
-
-{% if sysctl_lookup.params is defined %}
-{% do sysctl_lookup.pop('params') %}
-{% endif %}
-
-{% if sysctl_lookup.params2 is defined %}
-{% do sysctl_lookup.pop('params2') %}
-{% endif %}
-
-{## setup variable using grains['os_family'] based logic ##}
-{% set os_family_map = salt['grains.filter_by']({
-        'Arch': {},
-        'RedHat': {
-            "config": {
-                "location": '/etc/sysctl.conf',
-            }
-        },
-        'Suse': {
-            "pkg": "procps",
-        },
-        'Debian': {
-            "pkg": "procps",
-         },
-  },
-  grain="os_family",
-  merge=sysctl_lookup)
+{% set osfam = salt['grains.filter_by'](
+        os_family_map,
+        grain='os_family',
+    ) or {}
 %}
 
-{## Merge the flavor_map to the default settings ##}
-{% do default_settings.sysctl.update(os_family_map) %}
+{% do salt['defaults.merge'](default_settings['sysctl'], osfam) %}
+{% do salt['defaults.merge'](
+        default_settings['sysctl'],
+        salt['pillar.get']('sysctl:lookup',{}),
+    )
+%}
+
+{## Apply backwards compatiblility after merge ##}
+{% if default_settings['sysctl']['params'] is defined %}
+{% do default_settings['sysctl'].pop('params') %}
+{% endif %}
+{% if default_settings['sysctl']['params2'] is defined %}
+{% do default_settings['sysctl'].pop('params2') %}
+{% endif %}
 
 {## Merge in sysctl pillar ##}
 {% set sysctl_settings = salt['pillar.get'](
         'sysctl',
-        default=default_settings.sysctl,
-        merge=True
+        default=default_settings['sysctl'],
+        merge=True,
     )
 %}
