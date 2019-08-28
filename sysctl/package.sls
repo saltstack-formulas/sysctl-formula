@@ -2,7 +2,7 @@
 # vim: ft=sls
 
 {## import settings from map.jinja ##}
-{% from "sysctl/map.jinja" import sysctl_settings with context %}
+{%- from "sysctl/map.jinja" import sysctl_settings with context %}
 
 sysctl-pkg:
   pkg.installed:

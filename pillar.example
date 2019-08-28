@@ -1,3 +1,4 @@
+---
 sysctl:
   lookup:
     pkg: procps-ng

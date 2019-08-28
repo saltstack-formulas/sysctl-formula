@@ -1,12 +1,17 @@
+---
 RedHat:
   config:
     location: /etc/sysctl.conf
+
 Suse:
   pkg: procps
+
 Debian:
   pkg: procps
+
 Gentoo:
   pkg: sys-process/procps
+
 FreeBSD:
   config:
     location: /etc/sysctl.conf
