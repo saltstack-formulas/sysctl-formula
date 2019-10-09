@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
-{## Start with  defaults from defaults.sls and osfamilymap.yml ##}
+{#- Start with  defaults from defaults.sls and osfamilymap.yml #}
 {% import_yaml 'sysctl/defaults.yml' as default_settings %}
 {% import_yaml "sysctl/osfamilymap.yml" as os_family_map %}
 
@@ -18,7 +18,7 @@
     )
 %}
 
-{## Apply backwards compatiblility after merge ##}
+{#- Apply backwards compatiblility after merge #}
 {% if default_settings['sysctl']['params'] is defined %}
 {% do default_settings['sysctl'].pop('params') %}
 {% endif %}
@@ -26,7 +26,7 @@
 {% do default_settings['sysctl'].pop('params2') %}
 {% endif %}
 
-{## Merge in sysctl pillar ##}
+{#- Merge in sysctl pillar #}
 {% set sysctl_settings = salt['pillar.get'](
         'sysctl',
         default=default_settings['sysctl'],
