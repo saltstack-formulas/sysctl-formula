@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{## import settings from map.jinja ##}
+{#- import settings from map.jinja #}
 {%- from "sysctl/map.jinja" import sysctl_settings with context %}
 
 {% if sysctl_settings.params is defined %}
@@ -22,7 +22,7 @@ sysctl-present-{{ param_name }}:
     {% endif %}
   {% endfor %}
 {% else %}
-{## Support for legacy pillar structure ##}
+{#- Support for legacy pillar structure #}
   {%- if sysctl_settings.lookup is defined %}
     {% if sysctl_settings.lookup.params2 is defined -%}
       {%- for param_name, param in sysctl_settings.lookup.get('params2', {}).items() -%}
