@@ -2,6 +2,22 @@
 Changelog
 =========
 
+`0.6.2 <https://github.com/saltstack-formulas/sysctl-formula/compare/v0.6.1...v0.6.2>`_ (2019-10-12)
+--------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **rubocop:** add fixes using ``rubocop --safe-auto-correct`` (\ ` <https://github.com/saltstack-formulas/sysctl-formula/commit/8560b7a>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* merge travis matrix, add ``salt-lint`` & ``rubocop`` to ``lint`` job (\ ` <https://github.com/saltstack-formulas/sysctl-formula/commit/77c0407>`_\ )
+* **travis:** merge ``rubocop`` linter into main ``lint`` job (\ ` <https://github.com/saltstack-formulas/sysctl-formula/commit/d410b76>`_\ )
+
 `0.6.1 <https://github.com/saltstack-formulas/sysctl-formula/compare/v0.6.0...v0.6.1>`_ (2019-10-10)
 --------------------------------------------------------------------------------------------------------
 
