@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'Sysctl package' do
   title 'should be installed'
 
