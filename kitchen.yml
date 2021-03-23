@@ -312,6 +312,7 @@ suites:
       state_top:
         base:
           '*':
+            - sysctl._mapdata
             - sysctl
       pillars:
         top.sls:
