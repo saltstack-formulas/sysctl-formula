@@ -1,5 +1,3 @@
-.. _readme:
-
 sysctl-formula
 ==============
 
@@ -54,7 +52,7 @@ Installs and configures the sysctl package.
 Installs the sysctl package.
 
 ``sysctl.param``
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 This state manages the file ``sysctl.conf`` under ``/etc/sysctl`` (template found in "sysctl/files"). The configuration is populated by values in "sysctl/map.jinja" based on the package's default values (and RedHat, Debian, Suse and Arch family distribution specific values), which can then be overridden by values of the same name in pillar.
 
 Testing
