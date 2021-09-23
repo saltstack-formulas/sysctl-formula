@@ -1,11 +1,19 @@
 ---
 sysctl:
+  # override formula-related parameters
   lookup:
     pkg: procps-ng
     config:
+      # directory to store config files
       location: '/etc/sysctl.d'
+
+  # configure kernel state defaults
   params:
+    # store 'fs.file-max: 100000' in the specified file
     fs.file-max:
       value: 100000
+      # suffixes file name to config:location above
       config: fs.conf
+    # store 'vm.swappiness: 20' in salt-chosen file
+    #   (this is usually 99-salt.conf in sysctl dir)
     vm.swappiness: 20
