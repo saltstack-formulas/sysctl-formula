@@ -1,5 +1,50 @@
 # Changelog
 
+## [0.6.4](https://github.com/saltstack-formulas/sysctl-formula/compare/v0.6.3...v0.6.4) (2022-10-20)
+
+
+### Bug Fixes
+
+* **osfamilymap.yml:** correcting paths to directory ([4a0cc9d](https://github.com/saltstack-formulas/sysctl-formula/commit/4a0cc9da99c7813e283ac06f5b2001c2d7bacdd6))
+
+
+### Continuous Integration
+
+* update `pre-commit` configuration inc. for pre-commit.ci [skip ci] ([815468f](https://github.com/saltstack-formulas/sysctl-formula/commit/815468fe83b8a4d2402dd2c300796c26b77df0cc))
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] ([8090837](https://github.com/saltstack-formulas/sysctl-formula/commit/8090837e42a1ced78dabec7d68d8c71770c7910e))
+* update linters to latest versions [skip ci] ([0123ee8](https://github.com/saltstack-formulas/sysctl-formula/commit/0123ee8c6846745530ff070631093c360030715d))
+* **3003.1:** update inc. AlmaLinux, Rocky & `rst-lint` [skip ci] ([d7202f9](https://github.com/saltstack-formulas/sysctl-formula/commit/d7202f9ae644eccdfe42de5f99a7497049ecb845))
+* **commitlint:** ensure `upstream/master` uses main repo URL [skip ci] ([ede2ca2](https://github.com/saltstack-formulas/sysctl-formula/commit/ede2ca268d6c04ffa5d7ec6d767301f2633ffd2b))
+* **gemfile:** allow rubygems proxy to be provided as an env var [skip ci] ([5451879](https://github.com/saltstack-formulas/sysctl-formula/commit/5451879d879fa6905537bcec04b2f01ff70a8d7c))
+* **gemfile+lock:** use `ssf` customised `inspec` repo [skip ci] ([037d57c](https://github.com/saltstack-formulas/sysctl-formula/commit/037d57cb94809772d26c0decbec35689534b4978))
+* **gemfile+lock:** use `ssf` customised `kitchen-docker` repo [skip ci] ([efb56e8](https://github.com/saltstack-formulas/sysctl-formula/commit/efb56e8a432c8c60a8dbe35a12e53ec880dd9a09))
+* **gitlab-ci:** add `rubocop` linter (with `allow_failure`) [skip ci] ([26352ff](https://github.com/saltstack-formulas/sysctl-formula/commit/26352ffede1b33dea4a71dfe4866205338deacdc))
+* **kitchen:** move `provisioner` block & update `run_command` [skip ci] ([29e808a](https://github.com/saltstack-formulas/sysctl-formula/commit/29e808a8658197f4067fc3b6081d3779756c4621))
+* **kitchen+ci:** update with `3004` pre-salted images/boxes [skip ci] ([4cb9dfb](https://github.com/saltstack-formulas/sysctl-formula/commit/4cb9dfb18b13e60268f46ce73804ac1ab6596baf))
+* **kitchen+ci:** update with latest `3003.2` pre-salted images [skip ci] ([e88e412](https://github.com/saltstack-formulas/sysctl-formula/commit/e88e412ac8198fba4fb47eb3c56fa8f51d8d9151))
+* **kitchen+ci:** update with latest CVE pre-salted images [skip ci] ([8c7ddb7](https://github.com/saltstack-formulas/sysctl-formula/commit/8c7ddb7dff024ae7afe988ffbedd82e736fdddd4))
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] ([21d0f1e](https://github.com/saltstack-formulas/sysctl-formula/commit/21d0f1e8926234aa0d73781620c2182085ffb0a2))
+* add Debian 11 Bullseye & update `yamllint` configuration [skip ci] ([783d5be](https://github.com/saltstack-formulas/sysctl-formula/commit/783d5be5341e37adcf9edb47b8ca75ba76b8f11e))
+* **kitchen+gitlab:** remove Ubuntu 16.04 & Fedora 32 (EOL) [skip ci] ([8769ba6](https://github.com/saltstack-formulas/sysctl-formula/commit/8769ba64c1979fc289a40ac37513d07ab95f630f))
+* add `arch-master` to matrix and update `.travis.yml` [skip ci] ([f4b7e31](https://github.com/saltstack-formulas/sysctl-formula/commit/f4b7e317ff1fcb11d0a02710a30b15fa94f792e8))
+* **kitchen+ci:** use latest pre-salted images (after CVE) [skip ci] ([63487ad](https://github.com/saltstack-formulas/sysctl-formula/commit/63487adc4ba2119a3dd0c135623eeab16d9c62c6))
+* **kitchen+gitlab:** adjust matrix to add `3003` [skip ci] ([3e85047](https://github.com/saltstack-formulas/sysctl-formula/commit/3e85047b54041478b87e68cbb93c6aa6cf7f08f8))
+* **kitchen+gitlab-ci:** use latest pre-salted images [skip ci] ([40ae03f](https://github.com/saltstack-formulas/sysctl-formula/commit/40ae03f8897fb029f39c38f51ead07337105ba0b))
+* **pre-commit:** update hook for `rubocop` [skip ci] ([c04dc83](https://github.com/saltstack-formulas/sysctl-formula/commit/c04dc831e73b7efefb46446871cd3ef215c0e91b))
+
+
+### Documentation
+
+* **pillar.example:** add more detail ([48442fc](https://github.com/saltstack-formulas/sysctl-formula/commit/48442fcf664b4779d2dddfc57549f85821d0165e))
+* **readme:** fix heading [skip ci] ([ca792a2](https://github.com/saltstack-formulas/sysctl-formula/commit/ca792a234c3bf7402b7ea8736157a4661289cd5d))
+
+
+### Tests
+
+* **system:** add `build_platform_codename` [skip ci] ([e92d921](https://github.com/saltstack-formulas/sysctl-formula/commit/e92d921b3d71c097c9fbae285bfbdd6b91560da1))
+* **system.rb:** add support for `mac_os_x` [skip ci] ([a3895db](https://github.com/saltstack-formulas/sysctl-formula/commit/a3895db9208a476f9f845ddeff47db64b3458c2d))
+* standardise use of `share` suite & `_mapdata` state [skip ci] ([96039ae](https://github.com/saltstack-formulas/sysctl-formula/commit/96039ae3a6d03afb4e115123337ac2230a684991))
+
 ## [0.6.3](https://github.com/saltstack-formulas/sysctl-formula/compare/v0.6.2...v0.6.3) (2020-12-16)
 
 
