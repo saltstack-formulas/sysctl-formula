@@ -28,7 +28,6 @@ const releaseRules = [
 
 const config = {
   // TODO: remove this when we no longer process releases on GitLab CI
-  repositoryUrl: 'https://github.com/saltstack-formulas/sysctl-formula',
   plugins: [
     ['@semantic-release/commit-analyzer', { releaseRules }],
     '@semantic-release/release-notes-generator',
