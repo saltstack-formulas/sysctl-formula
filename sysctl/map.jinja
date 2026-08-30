@@ -1,35 +1,66 @@
-# -*- coding: utf-8 -*-
-# vim: ft=jinja
+{#- -*- coding: utf-8 -*- #}
+{#- vim: ft=jinja #}
 
-{#- Start with  defaults from defaults.sls and osfamilymap.yml #}
-{% import_yaml 'sysctl/defaults.yml' as default_settings %}
-{% import_yaml "sysctl/osfamilymap.yml" as os_family_map %}
+{#- Get the `tplroot` from `tpldir` #}
+{%- set tplroot = tpldir.split("/")[0] %}
+{%- from tplroot ~ "/libmapstack.jinja" import mapstack with context %}
 
-{% set osfam = salt['grains.filter_by'](
-        os_family_map,
-        grain='os_family',
-    ) or {}
-%}
+{#- Where to lookup parameters source files #}
+{%- set formula_param_dir = tplroot ~ "/parameters" %}
 
-{% do salt['defaults.merge'](default_settings['sysctl'], osfam) %}
-{% do salt['defaults.merge'](
-        default_settings['sysctl'],
-        salt['pillar.get']('sysctl:lookup',{}),
+{#- List of sources to lookup for parameters #}
+{#- Fallback to previously used grains plus minion `id` #}
+{%- set map_sources = [
+      "Y:G@osarch",
+      "Y:G@os_family",
+      "Y:G@os",
+      "Y:G@osfinger",
+      "C@" ~ tplroot ~ ":lookup",
+      "C@" ~ tplroot,
+      "Y:G@id",
+    ] %}
+
+{%- set _map_settings = mapstack(
+      matchers=["map_jinja.yaml"],
+      defaults={
+        "values": {"sources": map_sources}
+      },
+      log_prefix="map.jinja configuration: ",
     )
-%}
+    | load_yaml %}
 
-{#- Apply backwards compatiblility after merge #}
-{% if default_settings['sysctl']['params'] is defined %}
-{% do default_settings['sysctl'].pop('params') %}
-{% endif %}
-{% if default_settings['sysctl']['params2'] is defined %}
-{% do default_settings['sysctl'].pop('params2') %}
-{% endif %}
+{%- set map_sources = _map_settings | traverse("values:sources") %}
+{%- do salt["log.debug"](
+      "map.jinja: load parameters from sources:\n"
+      ~ map_sources
+      | yaml(False)
+    ) %}
 
-{#- Merge in sysctl pillar #}
-{% set sysctl_settings = salt['pillar.get'](
-        'sysctl',
-        default=default_settings['sysctl'],
-        merge=True,
+{#- Load formula parameters values #}
+{%- set _formula_matchers = ["defaults.yaml"] + map_sources %}
+
+{%- set _formula_settings = mapstack(
+      matchers=_formula_matchers,
+      dirs=[formula_param_dir],
+      defaults={
+        "values": {},
+        "merge_strategy": salt["config.get"](tplroot ~ ":strategy", None),
+        "merge_lists": salt["config.get"](tplroot ~ ":merge_lists", False),
+      },
+      log_prefix="map.jinja: ",
     )
-%}
+    | load_yaml %}
+
+{#- Make sure to track `map.jinja` configuration with `_mapdata` #}
+{%- do _formula_settings["values"].update(
+      {
+        "map_jinja": _map_settings["values"]
+      }
+    ) %}
+
+{%- do salt["log.debug"]("map.jinja: save parameters in variable 'mapdata'") %}
+{%- set mapdata = _formula_settings["values"] %}
+
+{#- Per formula post-processing of `mapdata` if it exists #}
+{%- do salt["log.debug"]("map.jinja: post-processing of 'mapdata'") %}
+{%- include tplroot ~ "/post-map.jinja" ignore missing %}

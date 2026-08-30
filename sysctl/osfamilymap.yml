@@ -1,9 +1,0 @@
----
-Suse:
-  pkg: procps
-
-Debian:
-  pkg: procps
-
-Gentoo:
-  pkg: sys-process/procps
