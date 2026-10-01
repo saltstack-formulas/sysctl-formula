@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.7.0](https://github.com/saltstack-formulas/sysctl-formula/compare/v0.6.4...v0.7.0) (2026-10-01)
+
+### Features
+
+* **map:** adjusted the formula to be more like the template formula ([4a92a91](https://github.com/saltstack-formulas/sysctl-formula/commit/4a92a91c701cb284d08480d93c25ccbe6233d82c))
+
+### Maintenance
+
+* **copier:** apply template `copier-ssf-ci`at v2.10.7 ([bb50197](https://github.com/saltstack-formulas/sysctl-formula/commit/bb50197a2a78abd690a48c2be69432dc183290af))
+* **copier:** update template https://github.com/dafyddj/copier-ssf-ci to v2.10.8 ([f59a33e](https://github.com/saltstack-formulas/sysctl-formula/commit/f59a33eb0da9ec5720bd691c514870c7f52f2a27))
+* **copier:** update template https://github.com/dafyddj/copier-ssf-ci to v2.11.0 ([13d203a](https://github.com/saltstack-formulas/sysctl-formula/commit/13d203af16c89175eca03089714a227c64ba6e48))
+* **copier:** update template https://github.com/dafyddj/copier-ssf-ci to v2.11.13 ([fadd04a](https://github.com/saltstack-formulas/sysctl-formula/commit/fadd04a7bccf4a3783fb6d1a3470e3420e9ba35a))
+* **copier:** update template https://github.com/dafyddj/copier-ssf-ci to v2.11.2 ([4d6ae5b](https://github.com/saltstack-formulas/sysctl-formula/commit/4d6ae5bc6daca59c4e12545c2c3e857dff71c3b9))
+* **copier:** update template https://github.com/dafyddj/copier-ssf-ci to v2.11.3 ([1a3c116](https://github.com/saltstack-formulas/sysctl-formula/commit/1a3c116c549bdd4a57108c633b7c6d2fa1767dc6))
+* **copier:** update template https://github.com/dafyddj/copier-ssf-ci to v2.11.4 ([a8f64d2](https://github.com/saltstack-formulas/sysctl-formula/commit/a8f64d2c854bf7913be74278499249c190d093f6))
+* **copier:** update template https://github.com/dafyddj/copier-ssf-ci to v2.11.7 ([1c42e07](https://github.com/saltstack-formulas/sysctl-formula/commit/1c42e0796ae5d4c3f167b657fa66b088bb780b54))
+* **style:** fix javascript style in release-rules.js ([956bcfa](https://github.com/saltstack-formulas/sysctl-formula/commit/956bcfaa2f702d6f30527977e462d6ada261f781))
+
 ## [0.6.4](https://github.com/saltstack-formulas/sysctl-formula/compare/v0.6.3...v0.6.4) (2022-10-20)
 
 
