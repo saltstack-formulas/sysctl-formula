@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+values:
+    sources:
+        - "Y:G@os_family"
+        # keep compatibility with user pillars
+        - "C:SUB@sysctl:lookup"
+        - "C:SUB@sysctl"
+...
